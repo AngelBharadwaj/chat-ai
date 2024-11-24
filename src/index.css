@@ -1,3 +1,202 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    color:#fff;
+    background: #09001d;
+    overflow: hidden;
+}
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .quiz-section,
+  .home {
+    width: 100%; /* Take full width */
+    max-width: 600px; /* Limit max width */
+    background: black; /* White background for quiz sections */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 20px; /* Padding inside the section */
+    margin: 20px; /* Space between sections */
+  }
+  
+  .quiz-box {
+    text-align: center; /* Center text in the quiz box */
+  }
+  
+  .quiz-header {
+    display: flex;
+    justify-content: space-between; /* Space between score and title */
+    margin-bottom: 20px; /* Space below header */
+  }
+  
+  .header-score {
+    font-weight: bold; /* Bold score */
+  }
+  
+  .question-text {
+    font-size: 20px; /* Font size for questions */
+    margin: 20px 0; /* Margin above and below */
+  }
+  
+  .option-list {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+  }
+  
+  .option {
+    padding: 15px; /* Padding for each option */
+    margin: 10px 0; /* Space between options */
+    border: 1px solid #007bff; /* Border color for options */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background 0.3s; /* Transition for hover effect */
+  }
+  
+  .option:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: black; /* White text on hover */
+  }
+  
+  .quiz-footer {
+    display: flex;
+    justify-content: space-between; /* Space between footer elements */
+    margin-top: 20px; /* Margin above footer */
+  }
+  
+  .next-btn {
+    background-color: #28a745; /* Green background for next button */
+    color: black; /* White text for button */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background 0.3s; /* Transition for hover effect */
+  }
+  
+  .next-btn:disabled {
+    background-color: #ccc; /* Grey background when disabled */
+    cursor: not-allowed; /* Not allowed cursor */
+  }
+  
+  .next-btn:not(:disabled):hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .result-box {
+    text-align: center; /* Center text in the result box */
+  }
+  
+  .percentage-container {
+    margin: 20px 0; /* Margin around percentage container */
+  }
+  
+  .circular-progress {
+    width: 100px; /* Width for progress circle */
+    height: 100px; /* Height for progress circle */
+    border: 5px solid #007bff; /* Border for circular progress */
+    border-radius: 50%; /* Make it circular */
+    display: flex; /* Flex for centering */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    margin: 0 auto; /* Center circle in the box */
+  }
+  
+  .progress-value {
+    font-size: 24px; /* Font size for progress value */
+  }
+  
+  .score-text {
+    margin-top: 10px; /* Margin above score text */
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 20px; /* Margin above buttons */
+  }
+  
+  .tryAgain-btn,
+  .goHome-btn {
+    background-color: #007bff; /* Blue background for buttons */
+    color: white; /* White text for buttons */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background 0.3s; /* Transition for hover effect */
+  }
+  
+  .tryAgain-btn:hover,
+  .goHome-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .home-content {
+    text-align: center; /* Center text in the home section */
+  }
+  
+  .start-btn {
+    background-color: #28a745; /* Green background for start button */
+    color: white; /* White text for button */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background 0.3s; /* Transition for hover effect */
+  }
+  
+  .start-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  .popup-info {
+    position: fixed; /* Fixed position to overlay on the screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: #09001d; /* White background for the popup */
+    color: white;
+    border: 2px solid white;
+    padding: 20px; /* Padding inside the popup */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    z-index: 1000; /* Ensure popup is above other elements */
+  }
+  
+  .popup-info h2 {
+    margin-top: 0; /* Remove margin above h2 */
+  }
+  
+  .info {
+    display: block; /* Block display for each info line */
+    margin: 10px 0; /* Space between info lines */
+  }
+  
+  .btn-group {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 20px; /* Margin above button group */
+  }
+  
+  .info-btn {
+    background-color: #007bff; /* Blue background for info buttons */
+    color: white; /* White text for buttons */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background 0.3s; /* Transition for hover effect */
+  }
+  
+  .info-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
