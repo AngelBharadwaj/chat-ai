@@ -35,6 +35,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink
+             className={({ isActive }) => (isActive ? 'text-white font-semibold p-2 rounded-md bg-teal-700' : 'text-white hover:bg-teal-500 hover:p-2 rounded-md')}
+            to="/quiz" >quiz</NavLink>
+          </li>
+          <li>
             <NavLink 
               to="/about" 
               className={({ isActive }) => (isActive ? 'text-white font-semibold p-2 rounded-md bg-teal-700' : 'text-white hover:bg-teal-500 hover:p-2 rounded-md')}

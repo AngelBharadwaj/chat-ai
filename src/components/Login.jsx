@@ -6,23 +6,28 @@ import nature from '../assets/ed.png';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name,setname]=useState("")
-  const navigate =useNavigate()
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handlersubmit = (e) => {
+  const handlersubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Reset error state
+    setLoading(true); // Set loading state to true
 
-    axios.post("http://localhost:3000/login", { email, password })
-      .then((res) => {
-        console.log("Login successful:", res.data);
-       const nameuser= localStorage.setItem('user', email);
-       setname(nameuser)
-       navigate("/")
-        // You can add further actions here, like redirecting to a dashboard
-      })
-      .catch((error) => {
-        console.error("Login failed:", error);
-      });
+    try {
+      const response = await axios.post("http://localhost:1000/login", { email, password });
+      console.log("Login successful:", response.data);
+      
+      // Assuming the response contains user information
+      localStorage.setItem('user', JSON.stringify(response.data.user)); // Store user info in local storage
+      navigate("/"); // Redirect to home page
+    } catch (error) {
+      console.error("Login failed:", error);
+      setError("Login failed. Please check your email and password."); // Set error message
+    } finally {
+      setLoading(false); // Reset loading state
+    }
   };
 
   return (
@@ -34,13 +39,13 @@ const Login = () => {
       }} 
       className="relative w-screen h-screen flex items-center justify-center"
     >
-      <h1>{name}</h1>
       <div className="bg-black bg-opacity-20 p-8 rounded-lg shadow-lg backdrop-blur-md absolute right-0 bottom-0 mb-32 mr-[19vw]">
         <form 
           onSubmit={handlersubmit}
           className="flex flex-col items-center justify-center w-full max-w-md"
         >
           <h1 className="text-2xl font-bold mb-6 text-white">Login</h1>
+          {error && <p className="text-red-500 mb-4">{error}</p>} {/* Display error message */}
           <div className="input-wrapper mb-4 w-full">
             <input 
               type="email"
@@ -70,9 +75,10 @@ const Login = () => {
           </div>
           <button 
             type="submit" 
-            className="bg-blue-600 text-white rounded-full px-6 py-2 hover:bg-blue-700 transition duration-200"
+            className={`bg-blue-600 text-white rounded-full px-6 py-2 hover:bg-blue-700 transition duration-200 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={loading} // Disable button while loading
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'} {/* Show loading text */}
           </button>
           <div className="register-link mt-4 text-center">
             <p className="text-white">Don’t have an account? <Link to="/register" className="text-blue-600">Register</Link></p>
@@ -80,7 +86,7 @@ const Login = () => {
         </form>
       </div>
     </div>
-  );
+ );
 };
 
 export default Login;

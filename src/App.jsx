@@ -17,15 +17,17 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/quiz' element={<Quiz/>}/>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
 
+
           {/* Protected Routes */}
-          <Route element={<PrivateRoutes />}>
+        
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/dashboard" element={<Dashboard />} />
-          </Route>
+  
         </Routes>
       </div>
 

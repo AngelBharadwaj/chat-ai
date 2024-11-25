@@ -1,14 +1,9 @@
-// PrivateRoutes.js
-import { Navigate, Outlet } from "react-router-dom";
+import React from 'react'
 
-const PrivateRoutes = () => {
-  // Check if the user is authenticated by checking if userid exists in localStorage
-  const userid = localStorage.getItem("user");
+const Protectedroute = () => {
+  return (
+    <div>Protectedroute</div>
+  )
+}
 
-  // If userid exists, the user is authenticated
-  const isAuthenticated = !!userid;
-
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
-};
-
-export default PrivateRoutes;
+export default Protectedroute
